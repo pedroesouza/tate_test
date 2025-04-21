@@ -1,0 +1,7 @@
+#Evan Mccabe
+
+Exit function:
+
+    Play Bye Bye Bye by NSYNC:
+
+    Exit the program:
