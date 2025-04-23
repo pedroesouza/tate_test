@@ -1,5 +1,3 @@
-#Evan Mccabe
-
 #Exit function:
 
     #Spooky Jumpscare:
