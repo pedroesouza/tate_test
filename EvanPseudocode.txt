@@ -1,9 +1,9 @@
 #Evan Mccabe
 
-Exit function:
+#Exit function:
 
-    Spooky Jumpscare:
+    #Spooky Jumpscare:
 
-    Play Bye Bye Bye by NSYNC:
+    #Play Bye Bye Bye by NSYNC music video at 2x speed:
 
-    Exit the program:
+    #Exit the program:
