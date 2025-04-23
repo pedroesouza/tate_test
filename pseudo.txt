@@ -1,0 +1,12 @@
+Start program
+
+User chooses start or exit
+
+If user chooses start then start the game
+
+Give context/exposition
+
+Display CONTROLS
+
+Stop displaying CONTROLS
+
