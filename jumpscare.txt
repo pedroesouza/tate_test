@@ -1,0 +1,31 @@
+IMPORT pygame
+IMPORT time
+
+DEFINE jumpscare function
+    CALL pygame.mixer.init()
+    
+    SET tate_image TO LOAD image "tate_image.png"
+    SET jumpscare_sound TO LOAD sound "jumpscare_sound.wav"
+    SET vine_boom TO LOAD sound "vine_boom.wav"
+    
+    SET image_rect TO CENTER of screen with tate_image
+
+    BLIT tate_image ONTO screen AT image_rect
+    PLAY jumpscare_sound
+    UPDATE screen display
+
+    WAIT 10 seconds
+
+    REMOVE tate_image
+    UPDATE screen display
+
+    PLAY vine_boom1
+
+    SET font TO pygame font size 64
+    SET text_surface TO RENDER "MUST HAVE BEEN THE WIND" IN white
+    CENTER text_surface ON screen
+    BLIT text_surface ONTO screen
+    UPDATE screen display
+
+    SLEEP 3 seconds
+END FUNCTION

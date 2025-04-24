@@ -1,9 +1,8 @@
 #Evan Mccabe
 
-Exit function:
-
-    Spooky Jumpscare:
-
-    Play Bye Bye Bye by NSYNC:
-
-    Exit the program:
+DEFINE exit_program function
+    INITIALIZE pygame mixer
+    LOAD "Bye Bye Bye" by NSYNC
+    PLAY the song
+    SLEEP until song is over
+    EXIT the program
