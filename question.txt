@@ -1,0 +1,69 @@
+IMPORT the pandas library
+
+IMPORT pygame
+
+
+INITIALIZE pygame
+
+SET screen width and height
+
+CREATE a display window with width and height
+
+SET font for rendering text
+
+
+DEFINE the question function:
+
+    SET the question csv to panda reading the csv from file
+
+    SEEK to the first line in the question csv
+
+    GO to the next line in the question csv
+
+
+    FOR every line in the question csv:
+
+        LOOP forever:
+
+            SET user input to empty string
+
+            DISPLAY the 5th row on the line at the center of the screen
+
+
+            WAIT for user to type input in the center of the screen:
+
+                HANDLE events for keypresses and update user input
+
+                IF Enter key is pressed, exit the loop
+
+                RENDER the current user input in the center of the screen
+
+
+            IF user input matches the 5th row on the line:
+
+                DISPLAY the 6th row on the line at the center of the screen
+
+                END the while loop
+
+            ELSE:
+
+                CONTINUE to next question
+
+
+            IF 7th row on the line is equal to True:
+
+                RUN the exit function
+
+                BREAK the loop
+
+
+            ELSE:
+
+                IF 4th row on the line is equal to True:
+
+                    RUN the jumpscare function
+
+                ELSE:
+
+                    CONTINUE to next question
+

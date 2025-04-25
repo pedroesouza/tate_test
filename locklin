@@ -1,0 +1,14 @@
+IMPORT the question function from the question file
+
+DEFINE main function
+    SET choice viariable to ASK if user wants to start (1) or exit (2)
+    IF user choses 1
+        DISPLAY the prologue
+        RUN the questions function
+    ELSE IF user choses 2
+        RUN exit function
+    ELSE
+        DISPLAY error message
+
+REPEAT FOREVER
+    RUN main function
