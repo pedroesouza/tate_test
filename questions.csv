@@ -1,6 +1,6 @@
-id,category,jumpscare,question,answer,exit
-1,math,False,What is 5 + 3?,8,False
-2,science,False,What gas do plants breathe in?,Carbon Dioxide,False
-3,horror,True,Type "BOO" to continue.,BOO,False
-4,geography,False,What is the capital of France?,Paris,False
-5,history,False,Who was the first US president?,George Washington,True
+id,category,jumpscare,question,answer,output,exit
+1,personal,False,Do you have heart disease?,Yes/No,False
+2,normal,False,How is your day going?,Good/Bad,False
+3,normal,False,What is your favorite hobby?,text entry,False
+4,eerie,False,Are you home alone?,Yes,False
+5,
