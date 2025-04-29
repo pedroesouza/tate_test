@@ -1,0 +1,36 @@
+IMPORT pygame, os
+
+INITIALIZE pygame
+SET screen width and height
+CREATE game screen
+SET window caption to "3D-Like Question Game"
+
+INITIALIZE image_frame_list as empty list
+SET image_folder = path to images folder
+
+FOR each file in image_folder:
+    IF file is an image (e.g., ends with .png or .jpg):
+        LOAD image from file and APPEND to image_frame_list
+
+SET frame_index = 0
+SET frame_delay = 10
+SET frame_counter = 0
+
+WHILE game is running:
+    CLEAR the screen
+
+    DRAW image_frame_list[frame_index] to the screen (scale if necessary to fit screen size)
+
+    INCREMENT frame_counter by 1
+    IF frame_counter >= frame_delay:
+        INCREMENT frame_index by 1
+        IF frame_index >= length of image_frame_list:
+            RESET frame_index to 0
+        RESET frame_counter to 0
+
+    UPDATE the display
+
+    HANDLE user input events (e.g., key press, quit events)
+
+    IF quit event:
+        EXIT the game

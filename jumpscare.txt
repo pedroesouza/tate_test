@@ -1,9 +1,8 @@
 IMPORT pygame
 IMPORT time
 
-CLASS Jumpscare(self, name, image, sound, text, boom)
+CLASS Jumpscare(self, image, sound, text, boom)
     DEFINE init function
-        self's name IS name
         self's image IS image
         self's sound IS sound
         self's text IS text
@@ -34,31 +33,14 @@ CLASS Jumpscare(self, name, image, sound, text, boom)
 DEFINE jumpscare_manager function with the type parameter
 
     SET tateImage variable TO LOAD image "tate_image.png"
+    SET deadPerson variable TO LOAD image "dead_person.png"
     SET tateJumpscareSound variable TO LOAD sound "jumpscare_sound.wav"
     SET vineBoom TO LOAD sound "vine_boom.wav"
 
-    If type is normal
+    IF type is normal
+        scare IS class Jumpscare (tateimage, tateJumpscareSound, "MUST HAVE BEEN THE WIND", vineBoom)
 
-    scare IS class Jumpscare ()
+    ELSE IF type is won
+        scare IS class Jumpscare (deadPerson, tateJumpscareSound, "YOU DIE :(", vineBoom)
 
-    
-    SET image_rect TO CENTER of screen with tate_image
-
-    BLIT tate_image ONTO screen AT image_rect
-    PLAY jumpscare_sound
-    UPDATE screen display
-
-    
-    REMOVE tate_image
-    UPDATE screen display
-
-    PLAY vine_boom1
-
-    SET font TO pygame font size 64
-    SET text_surface TO RENDER "MUST HAVE BEEN THE WIND" IN white
-    CENTER text_surface ON screen
-    BLIT text_surface ONTO screen
-    UPDATE screen display
-
-    SLEEP 3 seconds
-END FUNCTION
+    scare.jumpscare_run
