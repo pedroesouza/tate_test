@@ -1,12 +1,46 @@
 IMPORT pygame
 IMPORT time
 
-DEFINE jumpscare function
-    CALL pygame.mixer.init()
-    
-    SET tate_image TO LOAD image "tate_image.png"
-    SET jumpscare_sound TO LOAD sound "jumpscare_sound.wav"
-    SET vine_boom TO LOAD sound "vine_boom.wav"
+CLASS Jumpscare(self, name, image, sound, text, boom)
+    DEFINE init function
+        self's name IS name
+        self's image IS image
+        self's sound IS sound
+        self's text IS text
+        self's boom IS boom
+    DEFINE jumpscare_run
+        CALL pygame.mixer.init()
+
+        SET image_rect TO CENTER of screen with self's image
+        PLAY self's sound
+        UPDATE screen display
+
+        WAIT 10 seconds
+
+        REMOVE self's image
+        UPDATE screen display
+
+        PLAY self's boom
+
+        SET font TO pygame font size 64
+        SET text_surface TO RENDER self's text IN white
+        CENTER text_surface ON screen
+        BLIT text_surface ONTO screen
+        UPDATE screen display
+
+        SLEEP 3 seconds
+
+
+DEFINE jumpscare_manager function with the type parameter
+
+    SET tateImage variable TO LOAD image "tate_image.png"
+    SET tateJumpscareSound variable TO LOAD sound "jumpscare_sound.wav"
+    SET vineBoom TO LOAD sound "vine_boom.wav"
+
+    If type is normal
+
+    scare IS class Jumpscare ()
+
     
     SET image_rect TO CENTER of screen with tate_image
 
@@ -14,8 +48,7 @@ DEFINE jumpscare function
     PLAY jumpscare_sound
     UPDATE screen display
 
-    WAIT 10 seconds
-
+    
     REMOVE tate_image
     UPDATE screen display
 

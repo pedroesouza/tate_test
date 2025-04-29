@@ -2,6 +2,7 @@ IMPORT the pandas library
 
 IMPORT pygame
 
+FROM the jumpscare file IMPORT the jumpscare function
 
 INITIALIZE pygame
 

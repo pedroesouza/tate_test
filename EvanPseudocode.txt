@@ -1,7 +1,10 @@
 #Evan Mccabe
 
-DEFINE exit_program function
+DEFINE exit_program function WITH the parameter of won
+
     INITIALIZE pygame mixer
+    IF won parameter is true
+        RUN jumpscare function with parameter set to won 
     LOAD "Bye Bye Bye" by NSYNC
     PLAY the song
     SLEEP until song is over
