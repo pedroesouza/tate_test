@@ -1,15 +1,16 @@
-IMPORT pygame, os
+IMPORT pygame
+IMPORT os
 
 INITIALIZE pygame
 SET screen width and height
 CREATE game screen
-SET window caption to "3D-Like Question Game"
+SET window caption to "Tate Test"
 
 INITIALIZE image_frame_list as empty list
 SET image_folder = path to images folder
 
 FOR each file in image_folder:
-    IF file is an image (e.g., ends with .png or .jpg):
+    IF file is an image:
         LOAD image from file and APPEND to image_frame_list
 
 SET frame_index = 0
