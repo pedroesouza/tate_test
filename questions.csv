@@ -1,6 +1,10 @@
 id,category,jumpscare,question,answer,output,exit
-1,personal,False,Do you have heart disease?,Yes/No,False
-2,normal,False,How is your day going?,Good/Bad,False
-3,normal,False,What is your favorite hobby?,text entry,False
-4,eerie,False,Are you home alone?,Yes,False
-5,
+1,personal,False,Do you have heart disease?,Yes/No,Good/Bye,True/False
+2,normal,False,How is your day going?,Good/Bad,Good/Bad,False
+3,normal,False,What is your favorite hobby?,text entry,Cool,False
+4,eerie,False,Are you home alone?,Yes,Good...,False
+5,eerie,False,Where do you live?,text entry,address,False
+6,eerie,False,Are your doors unlocked?,Yes,I knew that,False
+7,eerie,False,What floor are you on?,text entry,Thanks,False
+8,normal,True/False,Are you subscribed to @CorneliusPlayz on YouTube?,Yes/No,Good.../Subscribe right now...,False
+9a,
