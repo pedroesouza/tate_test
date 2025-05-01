@@ -7,4 +7,12 @@ id,category,jumpscare,question,answer,output,exit
 6,eerie,False,Are your doors unlocked?,Yes,I knew that,False
 7,eerie,False,What floor are you on?,text entry,Thanks,False
 8,normal,True/False,Are you subscribed to @CorneliusPlayz on YouTube?,Yes/No,Good.../Subscribe right now...,False
-9a,
+9a,math,False,What is 9 + 10?,19,Next math question...,False
+9b,math,False,What is 1 + 1?,2,Next math question...,False
+9c,math,False,What is 67 + 33?,110,Next math question...,False
+9d,math,False,What is 9*7?,63,Next math question...,False
+9e,math,True/False,What is the square root of 25?,5,Let's see what you got... (print score),False
+10,eerie,False,Can you scream loudly?,No,Good,False
+11,philisophical,False,Do you believe in life after death?,Yes/No,Ok,False
+12,scary,True,Is there anything behind you?,Yes/No,How did you know?/Think again...,False
+13,normal,True/False,How would you rate your survery 1-10?,1-10,Thanks for your feedback.,True
