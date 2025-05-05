@@ -3,9 +3,9 @@ import pygame
  
 # activate the pygame library .
 pygame.init()
-X = 600
-Y = 600
- 
+X = 330
+Y = 255
+
 # create the display surface object
 # of specific dimension..e(X, Y).
 scrn = pygame.display.set_mode((X, Y))
@@ -14,7 +14,7 @@ scrn = pygame.display.set_mode((X, Y))
 pygame.display.set_caption('image')
  
 # create a surface object, image is drawn on it.
-imp = pygame.image.load("mainComputer.pdf").convert()
+imp = pygame.image.load("mainComputer.png").convert()
  
 # Using blit to copy content from one surface to other
 scrn.blit(imp, (0, 0))
