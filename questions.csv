@@ -1,18 +1,18 @@
-id,category,jumpscare,question,answer,output,exit
-1,personal,False,Do you have heart disease?,Yes/No,Good/Bye,True/False
-2,normal,False,How is your day going?,Good/Bad,Good/Bad,False
-3,normal,False,What is your favorite hobby?,text entry,Cool,False
-4,eerie,False,Are you home alone?,Yes,Good...,False
-5,eerie,False,Where do you live?,text entry,address,False
-6,eerie,False,Are your doors unlocked?,Yes,I knew that,False
-7,eerie,False,What floor are you on?,text entry,Thanks,False
-8,normal,True/False,Are you subscribed to @CorneliusPlayz on YouTube?,Yes/No,Good.../Subscribe right now...,False
-9a,math,False,What is 9 + 10?,19,Next math question...,False
-9b,math,False,What is 1 + 1?,2,Next math question...,False
-9c,math,False,What is 67 + 33?,110,Next math question...,False
+id,question
+1,Do you have heart disease?
+2,How is your day going?
+3,What is your favorite hobby?
+4,,Are you home alone?
+5,Where do you live?
+6,Are your doors unlocked?
+7,What floor are you on?
+8,Are you subscribed to @CorneliusPlayz on YouTube?
+9a,What is 9 + 10?
+9b,What is 1 + 1?
+9c,What is 67 + 33?
 9d,math,False,What is 9*7?,63,Next math question...,False
-9e,math,True/False,What is the square root of 25?,5,Let's see what you got... (print score),False
-10,eerie,False,Can you scream loudly?,No,Good,False
-11,philisophical,False,Do you believe in life after death?,Yes/No,Ok,False
-12,scary,True,Is there anything behind you?,Yes/No,How did you know?/Think again...,False
-13,normal,True/False,How would you rate your survery 1-10?,1-10,Thanks for your feedback.,True
+9e,What is the square root of 25?
+10,Can you scream loudly?
+11,Do you believe in life after death?
+12,Is there anything behind you?
+13,How would you rate your survery 1-10?

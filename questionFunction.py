@@ -1,4 +1,3 @@
-import requests
 import csv
 import os
 
@@ -33,16 +32,68 @@ def question_teller():
         reader = csv.reader(file)
         next(reader)
         for row in reader:
-            question = input(f'{row[3]}: ')
-            if row[0] == '5':
-                name()
-                continue
-            if row[4] == 'text entry':
-                print(row[5])
-            else:
-                if question == row[4]:
-                    print(row[5])
-                else:
-                    print('Incorrect.')
+            id = row[0]
+            score = 0
+            if id == '9':
+                print("Let's play a little game, shall we?")
+            while True:
+                question = input(f'Question {id}: {row[1]}: ').lower().strip()
+                if id == '1':
+                    if question == 'yes': #Add this at the end for the for loop.
+                        print("You can't play this game then. Bye.")
+                        break
+                    elif question == 'no':
+                        print('Ok good.')
+                        break
+                    else:
+                        print('Incorrect option, try again. (type yes or no).')
+                if id == '2':
+                    print('Ok.')
+                    break
+                if id == '3':
+                    print("That's cool.")
+                    break
+                if id == '4':
+                    if question == 'yes':
+                        print('Ok, just double checking.')
+                        break
+                    elif question == 'no':
+                        print('Are you sure?...')
+                        break
+                    else:
+                        print('Incorrect option, try again. (type yes or no).')
+                if id == '5':
+                    print('Actually based off my IP grabber, you are at 31.255.56.229')
+                    break
+                if id == '6':
+                    if question == 'yes':
+                        print('Ok cool, our team is ready to move in...')
+                        break
+                    elif question == 'no':
+                        print('Not anymore...')
+                        break
+                    else:
+                        print('Incorrect option, try again. (type yes or no).')
+                if id == '7':
+                    try:
+                        int(question)
+                        print('Thanks.')
+                        break
+                    except ValueError:
+                        print('Incorrect option, try again. (type a number).')
+                if id == '8':
+                    if question == 'yes':
+                        print('Good boy.')
+                        break
+                    elif question == 'no':
+                        print('Bad boy...')
+                        #jumpscare
+                        break
+                if id == '9a':
+                    if question == '19':
+                        print('Correct!')
+                        score += 1
+                    
+                
 
 question_teller()
