@@ -36,154 +36,156 @@ def question_teller():
             id = row[0]
             score = 0
             total_score = 0
+            print('Welcome to the survey.')
+            time.sleep(3)
             if id == '9':
-                print("Let's play a little game, shall we?")
+                print("\nLet's play a little game, shall we?")
             while True:
-                question = input(f'Question {id}: {row[1]}: ').lower().strip()
+                question = input(f'\nQuestion {id}: {row[1]}: ').lower().strip()
                 if id == '1':
                     if question == 'yes': #Add this at the end for the for loop.
-                        print("You can't play this game then. Bye.")
+                        print("\nYou can't play this game then. Bye.")
                         break
                     elif question == 'no':
-                        print('Ok good.')
+                        print('\nOk good.')
                         break
                     else:
-                        print('Incorrect option, try again. (type yes or no).')
+                        print('\nIncorrect option, try again. (type yes or no).')
                 elif id == '2':
-                    print('Ok.')
+                    print('\nOk.')
                     break
                 elif id == '3':
-                    print("That's cool.")
+                    print("\nThat's cool.")
                     break
                 elif id == '4':
                     if question == 'yes':
-                        print('Ok, just double checking.')
+                        print('\nOk, just double checking.')
                         break
                     elif question == 'no':
-                        print('Are you sure?...')
+                        print('\nAre you sure?...')
                         break
                     else:
-                        print('Incorrect option, try again. (type yes or no).')
+                        print('\nIncorrect option, try again. (type yes or no).')
                 elif id == '5':
-                    print('Actually based off my IP grabber, you are at 31.255.56.229')
+                    print('\nActually based off my IP grabber, you are at 31.255.56.229')
                     break
                 elif id == '6':
                     if question == 'yes':
-                        print('Ok cool, our team is ready to move in...')
+                        print('\nOk cool, our team is ready to move in...')
                         break
                     elif question == 'no':
-                        print('Not anymore...')
+                        print('\nNot anymore...')
                         break
                     else:
-                        print('Incorrect option, try again. (type yes or no).')
+                        print('\nIncorrect option, try again. (type yes or no).')
                 elif id == '7':
                     try:
                         int(question)
-                        print('Thanks.')
+                        print('\nThanks.')
                         break
                     except ValueError:
-                        print('Incorrect option, try again. (type a number).')
+                        print('\nIncorrect option, try again. (type a number).')
                 elif id == '8':
                     if question == 'yes':
-                        print('Good boy.')
+                        print('\nGood boy.')
                         break
                     elif question == 'no':
-                        print('Bad boy...')
+                        print('\nBad boy...')
                         #jumpscare
                         break
                 elif id == '9a':
                     if question == '19':
-                        print('Correct!')
+                        print('\nCorrect!')
                         score += 1
                         total_score += 1
                         break
                     else:
-                        print('Incorrect...')
+                        print('\nIncorrect...')
                         total_score += 1
                         break
                 elif id == '9b':
                     if question == '2':
-                        print('Correct!')
+                        print('\nCorrect!')
                         score += 1
                         total_score += 1
                         break
                     else:
-                        print('Incorrect...')
+                        print('\nIncorrect...')
                         total_score += 1
                         break
                 elif id == '9c':
                     if question == '110':
-                        print('Correct!')
+                        print('\nCorrect!')
                         score += 1
                         total_score += 1
                         break
                     else:
-                        print('Incorrect...')
+                        print('\nIncorrect...')
                         total_score += 1
                         break
                 elif id == '9d':
                     if question == '63':
-                        print('Correct!')
+                        print('\nCorrect!')
                         score += 1
                         total_score += 1
                         break
                     else:
-                        print('Incorrect...')
+                        print('\nIncorrect...')
                         total_score += 1
                         break
                 elif id == '9e':
                     if question == '5':
-                        print('Correct!')
+                        print('\nCorrect!')
                         score += 1
                         total_score += 1
                         break
                     else:
-                        print('Incorrect...')
+                        print('\nIncorrect...')
                         total_score += 1
                         break
                 elif total_score == 5:
                     if score >= 3:
+                        print('\nYou failed...')
                         # jumpscare
-                        pass
                         break
                     else:
-                        print('You passed.')
+                        print('\nYou passed.')
                         break
                 elif id == '10':
                     if question == 'yes':
-                        print('Nuh uh.')
+                        print('\nNuh uh.')
                         break
                     elif question == 'no':
-                        print('Good.')
+                        print('\nGood.')
                         break
                     else:
-                        print('Incorrect option, try again. (type yes or no).')
+                        print('\nIncorrect option, try again. (type yes or no).')
                 elif id == '11':
                     if question == 'yes' or question == 'no':
-                        print('Ok.')
+                        print('\nOk.')
                         break
                     else:
-                        print('Incorrect option, try again. (type yes or no).')
+                        print('\nIncorrect option, try again. (type yes or no).')
                 elif id == '12':
                     if question == 'yes':
-                        print('How did you know?')
+                        print('\nHow did you know?')
                         time.sleep(2)
                         #jumpscare
                         break
                     elif question == 'no':
-                        print('Think again...')
+                        print('\nThink again...')
                         #wait for user to turn around
                         time.sleep(2)
                         #jumpscare
                         break
                 elif id == '13':
                     if question in str(range(1, 10)):
-                        print('Give me a ten.')
+                        print('\nGive me a ten.')
                         #jumpscare
                     elif question == '10':
-                        print('Good boy.')
+                        print('\nGood boy.')
                         break
                     else:
-                        print('Incorrect input, try again. (Type a number 1-10).')
+                        print('\nIncorrect input, try again. (Type a number 1-10).')
 
 question_teller()
