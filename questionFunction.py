@@ -7,20 +7,34 @@ import sys
 
 # ---------------------------- Pygame Setup ----------------------------
 pygame.init()
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 1650, 1275
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Pygame Survey")
-font = pygame.font.SysFont(None, 36)
+font = pygame.font.SysFont(None, 48)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
-# Variable that tracks which image is active (used for positioning logic)
-photo_num = None
+photo_num = "mainComputer"  # initial image
 
-# ---------------------------- Utilities ----------------------------
-def draw_centered_text(question, user_input=''):
+# ---------------------------- Image Loading ----------------------------
+def load_image(image_name):
+    path = f"Images/{image_name}.png"
+    try:
+        image = pygame.image.load(path).convert()
+        return image
+    except:
+        return None
+
+# ---------------------------- Rendering ----------------------------
+def draw_screen(question, user_input='', image_name='mainComputer'):
     screen.fill(WHITE)
 
+    # Draw background image
+    image = load_image(image_name)
+    if image:
+        screen.blit(image, (0, 0))
+
+    # Render text
     question_surface = font.render(question, True, BLACK)
     input_surface = font.render(user_input, True, BLACK)
 
@@ -32,13 +46,13 @@ def draw_centered_text(question, user_input=''):
     pygame.display.flip()
 
 def show_message(message, wait_time=2):
-    draw_centered_text(message)
+    draw_screen(message, '', photo_num)
     time.sleep(wait_time)
 
 def get_user_input(question_text):
     user_input = ''
     while True:
-        draw_centered_text(question_text, user_input)
+        draw_screen(question_text, user_input, photo_num)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -50,19 +64,8 @@ def get_user_input(question_text):
                     user_input = user_input[:-1]
                 else:
                     user_input += event.unicode
-
-# ---------------------------- Name Handling ----------------------------
-try:
-    name = os.getlogin()
-except Exception:
-    name = getpass.getuser()
-
-formatted_name = name.replace('.', ' ').split()
-if formatted_name:
-    formatted_name[0] = formatted_name[0].capitalize()
-formatted_name = ' '.join(formatted_name)
-
-# ---------------------------- Main Question Logic ----------------------------
+                    
+# ---------------------------- Survey Logic ----------------------------
 def question_teller():
     global photo_num
     score = 0
@@ -96,7 +99,7 @@ def question_teller():
                         show_message("Ok good.")
                         break
                     else:
-                        question = get_user_input(f"Question {id}: {row[1]} (type yes or no)")
+                        question = get_user_input(f"Question {id}: {row[1]} (yes/no)")
 
             elif id == '2':
                 show_message("Ok.")
@@ -111,20 +114,22 @@ def question_teller():
                         show_message("Are you sure?...")
                         break
                     else:
-                        question = get_user_input(f"Question {id}: {row[1]} (type yes or no)")
+                        question = get_user_input(f"Question {id}: {row[1]} (yes/no)")
             elif id == '5':
-                photo_num = 'image1'  # Example trigger
+                photo_num = 'up1'  # Update background image
                 show_message("Actually based off my IP grabber, you are at 31.255.56.229")
             elif id == '6':
                 while True:
                     if question == 'yes':
+                        photo_num = 'right1'
                         show_message("Ok cool, our team is ready to move in...")
                         break
                     elif question == 'no':
+                        photo_num = 'left1'
                         show_message("Not anymore...")
                         break
                     else:
-                        question = get_user_input(f"Question {id}: {row[1]} (type yes or no)")
+                        question = get_user_input(f"Question {id}: {row[1]} (yes/no)")
             elif id == '7':
                 while True:
                     try:
@@ -142,7 +147,7 @@ def question_teller():
                         show_message("Bad boy...")
                         break
                     else:
-                        question = get_user_input(f"Question {id}: {row[1]} (type yes or no)")
+                        question = get_user_input(f"Question {id}: {row[1]} (yes/no)")
             elif id == '9a':
                 if question == '19':
                     show_message("Correct!")
@@ -184,7 +189,7 @@ def question_teller():
                 else:
                     show_message("You passed.")
             elif id == '10':
-                photo_num = 'image2'
+                photo_num = 'down1'
                 while True:
                     if question == 'yes':
                         show_message("Nuh uh.")
@@ -193,14 +198,14 @@ def question_teller():
                         show_message("Good.")
                         break
                     else:
-                        question = get_user_input(f"Question {id}: {row[1]} (type yes or no)")
+                        question = get_user_input(f"Question {id}: {row[1]} (yes/no)")
             elif id == '11':
                 while True:
                     if question in ['yes', 'no']:
                         show_message("Ok.")
                         break
                     else:
-                        question = get_user_input(f"Question {id}: {row[1]} (type yes or no)")
+                        question = get_user_input(f"Question {id}: {row[1]} (yes/no)")
             elif id == '12':
                 while True:
                     if question == 'yes':
@@ -212,7 +217,7 @@ def question_teller():
                         time.sleep(2)
                         break
                     else:
-                        question = get_user_input(f"Question {id}: {row[1]} (type yes or no)")
+                        question = get_user_input(f"Question {id}: {row[1]} (yes/no)")
             elif id == '13':
                 while True:
                     if question in [str(i) for i in range(1, 10)]:
@@ -221,8 +226,8 @@ def question_teller():
                         show_message("Good boy.")
                         break
                     else:
-                        question = get_user_input(f"Question {id}: {row[1]} (Type a number 1-10)")
+                        question = get_user_input(f"Question {id}: {row[1]} (1–10)")
 
+# ---------------------------- Run ----------------------------
 question_teller()
 pygame.quit()
-sys.exit()
