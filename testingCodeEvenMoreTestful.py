@@ -32,16 +32,19 @@ while status:
         if event.type == pygame.QUIT:
             status = False
         elif event.type == pygame.KEYDOWN:  # Detect key press
-            if event.key == pygame.K_w:  # W key
+            if event.key == pygame.K_UP:  # Up arrow key
                 update_image("Images/up1.png")
-            elif event.key == pygame.K_a:  # A key
+            elif event.key == pygame.K_LEFT:  # Left arrow key
                 update_image("Images/left1.png")
-            elif event.key == pygame.K_s:  # S key
+            elif event.key == pygame.K_DOWN:  # Down arrow key
                 update_image("Images/down1.png")
-            elif event.key == pygame.K_d:  # D key
+            elif event.key == pygame.K_RIGHT:  # Right arrow key
                 update_image("Images/right1.png")
             elif event.key == pygame.K_q:  # Q key to quit
                 status = False
+        elif event.type == pygame.KEYUP:  # Detect key release
+            # Reset to the mainComputer image when no key is pressed
+            update_image("Images/mainComputer.png")
 
 # deactivates the pygame library
 pygame.quit()
