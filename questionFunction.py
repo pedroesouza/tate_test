@@ -3,17 +3,18 @@ import csv
 import time
 import sys
 
-# ---------------------------- Pygame Setup ----------------------------
+# Pygame initialization setup
 pygame.init()
 WIDTH, HEIGHT = 1650, 1275
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Pygame Survey")
 font = pygame.font.SysFont(None, 36)
 
+# Define color constants
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
-# Load images
+# Load background images
 images = {
     "center": pygame.transform.scale(pygame.image.load("Images/mainComputer.png"), (WIDTH, HEIGHT)),
     "up": pygame.transform.scale(pygame.image.load("Images/up1.png"), (WIDTH, HEIGHT)),
@@ -22,7 +23,7 @@ images = {
     "right": pygame.transform.scale(pygame.image.load("Images/right1.png"), (WIDTH, HEIGHT)),
 }
 
-# Track which key is held
+# Arrow key tracking
 held_keys = {
     "up": False,
     "down": False,
@@ -30,16 +31,16 @@ held_keys = {
     "right": False
 }
 
-# Base text position
+# Text positioning setup
 base_text_x, base_text_y = WIDTH // 2, HEIGHT // 2 - 100
 text_offset_x, text_offset_y = 0, 0
 speed = 20
 
-# Start with the center image
+# Default background image
 current_bg = images["center"]
 
+# Text wrapping function
 def wrap_text(text, font, max_chars_per_line=40):
-    """Split text into lines based on character count and return rendered surfaces."""
     lines = []
     while len(text) > max_chars_per_line:
         split_index = text.rfind(' ', 0, max_chars_per_line)
@@ -50,6 +51,7 @@ def wrap_text(text, font, max_chars_per_line=40):
     lines.append(text)
     return [font.render(line, True, BLACK) for line in lines]
 
+# Draw screen content
 def draw_screen(question, user_input=''):
     global text_offset_x, text_offset_y, current_bg
 
@@ -86,6 +88,7 @@ def draw_screen(question, user_input=''):
 
     pygame.display.flip()
 
+# Show temporary message
 def show_message(message, wait_time=2):
     draw_screen(message, '')
     start = time.time()
@@ -95,6 +98,7 @@ def show_message(message, wait_time=2):
                 pygame.quit()
                 sys.exit()
 
+# Handle user input
 def get_user_input(question_text):
     user_input = ''
     clock = pygame.time.Clock()
@@ -115,7 +119,7 @@ def get_user_input(question_text):
                 elif event.key == pygame.K_SPACE:
                     held_keys["up"] = held_keys["down"] = held_keys["left"] = held_keys["right"] = False
                 elif event.key in (pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT):
-                    # --- Only one arrow key at a time ---
+                    # One arrow key
                     held_keys["up"] = held_keys["down"] = held_keys["left"] = held_keys["right"] = False
                     if event.key == pygame.K_UP:
                         held_keys["up"] = True
@@ -140,6 +144,7 @@ def get_user_input(question_text):
 
         clock.tick(60)
 
+# Survey logic function
 def question_teller():
     score = 0
     total_score = 0
@@ -156,14 +161,17 @@ def question_teller():
             question_text = f"Question {id}: {row[1]}"
             question = get_user_input(question_text)
 
+            # Quiz mode trigger
             if id == '9':
                 quiz_mode = True
                 show_message("Let's play a little game, shall we?")
                 continue
 
+            # Exit early condition
             if id == '13' and question == '10':
                 break
 
+            # Specific question logic
             if id == '1':
                 while True:
                     if question == 'yes':
@@ -265,12 +273,13 @@ def question_teller():
                     else:
                         question = get_user_input(f"Question {id}: {row[1]} (1–10)")
 
+    # Show quiz results
     if quiz_mode and total_score == 5:
         if score >= 3:
             show_message("You failed...")
         else:
             show_message("You passed.")
 
-# ---------------------------- Run ----------------------------
+# Run main function
 question_teller()
 pygame.quit()
