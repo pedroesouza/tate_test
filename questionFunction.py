@@ -31,54 +31,58 @@ held_keys = {
 }
 
 # Base text position
-base_text_x, base_text_y = WIDTH // 2, HEIGHT // 2 - 100  # Higher on screen
+base_text_x, base_text_y = WIDTH // 2, HEIGHT // 2 - 100
 text_offset_x, text_offset_y = 0, 0
 speed = 20
 
 # Start with the center image
 current_bg = images["center"]
 
-def draw_screen(question, user_input=''):
-    if not pygame.display.get_init():
-        return
+def wrap_text(text, font, max_chars_per_line=40):
+    """Split text into lines based on character count and return rendered surfaces."""
+    lines = []
+    while len(text) > max_chars_per_line:
+        split_index = text.rfind(' ', 0, max_chars_per_line)
+        if split_index == -1:
+            split_index = max_chars_per_line
+        lines.append(text[:split_index])
+        text = text[split_index:].lstrip()
+    lines.append(text)
+    return [font.render(line, True, BLACK) for line in lines]
 
-    # Adjust text offset based on held keys
+def draw_screen(question, user_input=''):
     global text_offset_x, text_offset_y, current_bg
 
-    # Reset text offset
     text_offset_x = 0
     text_offset_y = 0
     current_bg = images["center"]
 
-    # Check for held keys
     if held_keys["up"]:
-        text_offset_y += speed + 500
+        text_offset_y += speed + 475
         current_bg = images["up"]
     if held_keys["down"]:
         text_offset_y -= speed + 475
         current_bg = images["down"]
     if held_keys["left"]:
         text_offset_x += speed + 720
-        text_offset_y -= speed + 175
+        text_offset_y -= speed + 170
         current_bg = images["left"]
     if held_keys["right"]:
-        text_offset_x -= speed + 400
+        text_offset_x -= speed + 470
         text_offset_y -= speed + 160
         current_bg = images["right"]
 
-    # Clear screen with current background
     screen.blit(current_bg, (0, 0))
 
-    # Render text
-    question_surface = font.render(question, True, BLACK)
-    input_surface = font.render(user_input, True, BLACK)
+    question_lines = wrap_text(question, font)
+    for i, line_surf in enumerate(question_lines):
+        rect = line_surf.get_rect(center=(base_text_x + text_offset_x, base_text_y - 80 + i * 40 + text_offset_y))
+        screen.blit(line_surf, rect)
 
-    # Position text with offset
-    question_rect = question_surface.get_rect(center=(base_text_x + text_offset_x, base_text_y - 60 + text_offset_y))
-    input_rect = input_surface.get_rect(center=(base_text_x + text_offset_x, base_text_y + 30 + text_offset_y))
-
-    screen.blit(question_surface, question_rect)
-    screen.blit(input_surface, input_rect)
+    input_lines = wrap_text(user_input, font)
+    for i, line_surf in enumerate(input_lines):
+        rect = line_surf.get_rect(center=(base_text_x + text_offset_x, base_text_y + 40 + i * 40 + text_offset_y))
+        screen.blit(line_surf, rect)
 
     pygame.display.flip()
 
@@ -96,7 +100,6 @@ def get_user_input(question_text):
     clock = pygame.time.Clock()
 
     while True:
-        # Redraw the screen every frame
         draw_screen(question_text, user_input)
 
         for event in pygame.event.get():
@@ -109,17 +112,19 @@ def get_user_input(question_text):
                     return user_input.strip().lower()
                 elif event.key == pygame.K_BACKSPACE:
                     user_input = user_input[:-1]
-                elif event.key == pygame.K_UP:
-                    held_keys["up"] = True
-                elif event.key == pygame.K_DOWN:
-                    held_keys["down"] = True
-                elif event.key == pygame.K_LEFT:
-                    held_keys["left"] = True
-                elif event.key == pygame.K_RIGHT:
-                    held_keys["right"] = True
                 elif event.key == pygame.K_SPACE:
-                    # Reset all held keys
                     held_keys["up"] = held_keys["down"] = held_keys["left"] = held_keys["right"] = False
+                elif event.key in (pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT):
+                    # --- Only one arrow key at a time ---
+                    held_keys["up"] = held_keys["down"] = held_keys["left"] = held_keys["right"] = False
+                    if event.key == pygame.K_UP:
+                        held_keys["up"] = True
+                    elif event.key == pygame.K_DOWN:
+                        held_keys["down"] = True
+                    elif event.key == pygame.K_LEFT:
+                        held_keys["left"] = True
+                    elif event.key == pygame.K_RIGHT:
+                        held_keys["right"] = True
                 else:
                     user_input += event.unicode
 
@@ -133,8 +138,7 @@ def get_user_input(question_text):
                 elif event.key == pygame.K_RIGHT:
                     held_keys["right"] = False
 
-        clock.tick(60)  # 60 FPS
-
+        clock.tick(60)
 
 def question_teller():
     score = 0
@@ -254,6 +258,7 @@ def question_teller():
                 while True:
                     if question in [str(i) for i in range(1, 10)]:
                         show_message("Give me a ten.")
+                        question = get_user_input(f"Question {id}: {row[1]} (1–10)")
                     elif question == '10':
                         show_message("Good boy.")
                         break
