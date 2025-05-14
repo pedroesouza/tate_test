@@ -91,7 +91,7 @@ def draw_screen(question, user_input=''):
         screen.blit(line_surf, rect)
     
     # Display backslash quit instruction in top-right corner
-    quit_text = font.render("Press backslash to quit", True, BLACK)
+    quit_text = font.render("Press backslash to quit", True, WHITE)
     quit_rect = quit_text.get_rect(topright=(WIDTH - 20, 20))
     screen.blit(quit_text, quit_rect)
 
