@@ -122,13 +122,20 @@ def get_user_input(question_text):
 
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    return user_input.strip().lower()
+                    cleaned_input = user_input.strip().lower()
+                    if cleaned_input == "quit":
+                        pygame.quit()
+                        sys.exit()
+                    return cleaned_input
+
                 elif event.key == pygame.K_BACKSPACE:
                     user_input = user_input[:-1]
+
                 elif event.key == pygame.K_SPACE:
-                    held_keys["up"] = held_keys["down"] = held_keys["left"] = held_keys["right"] = False
+                    user_input += ' '
+
                 elif event.key in (pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT):
-                    # One arrow key
+                    # Reset all arrow key flags
                     held_keys["up"] = held_keys["down"] = held_keys["left"] = held_keys["right"] = False
                     if event.key == pygame.K_UP:
                         held_keys["up"] = True
@@ -138,11 +145,9 @@ def get_user_input(question_text):
                         held_keys["left"] = True
                     elif event.key == pygame.K_RIGHT:
                         held_keys["right"] = True
-                    elif event.key == pygame.K_F2:
-                        pygame.quit()
-                        sys.exit()
+
                 else:
-                    user_input += event.unicode
+                    user_input += event.unicode  # Accept letters, numbers, symbols, etc.
 
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_UP:
@@ -155,6 +160,7 @@ def get_user_input(question_text):
                     held_keys["right"] = False
 
         clock.tick(60)
+
 
 # Survey logic function
 def question_teller():
