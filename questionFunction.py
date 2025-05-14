@@ -41,16 +41,19 @@ speed = 20
 current_bg = images["center"]
 
 # Text wrapping function
-def wrap_text(text, font, max_chars_per_line=40):
+def wrap_text(text, font, max_chars_per_line=35):
     lines = []
     while len(text) > max_chars_per_line:
+        # Try to break at the last space before the limit
         split_index = text.rfind(' ', 0, max_chars_per_line)
         if split_index == -1:
+            # If no space is found, force split at the limit
             split_index = max_chars_per_line
         lines.append(text[:split_index])
-        text = text[split_index:].lstrip()
-    lines.append(text)
+        text = text[split_index:].lstrip()  # Remove leading spaces for the next line
+    lines.append(text)  # Add the final line
     return [font.render(line, True, BLACK) for line in lines]
+
 
 # Draw screen content
 def draw_screen(question, user_input=''):
@@ -86,6 +89,11 @@ def draw_screen(question, user_input=''):
     for i, line_surf in enumerate(input_lines):
         rect = line_surf.get_rect(center=(base_text_x + text_offset_x, base_text_y + 40 + i * 40 + text_offset_y))
         screen.blit(line_surf, rect)
+    
+    # Display backslash quit instruction in top-right corner
+    quit_text = font.render("Press backslash to quit", True, BLACK)
+    quit_rect = quit_text.get_rect(topright=(WIDTH - 20, 20))
+    screen.blit(quit_text, quit_rect)
 
     pygame.display.flip()
 
@@ -130,6 +138,9 @@ def get_user_input(question_text):
                         held_keys["left"] = True
                     elif event.key == pygame.K_RIGHT:
                         held_keys["right"] = True
+                    elif event.key == pygame.K_BACKSLASH:
+                        pygame.quit()
+                        sys.exit()
                 else:
                     user_input += event.unicode
 
