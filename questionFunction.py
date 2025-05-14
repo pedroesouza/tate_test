@@ -2,7 +2,7 @@ import pygame
 import csv
 import time
 import sys
-from jumpscare import jumpscare_manager()
+from jumpscare import jumpscare_manager as jumpscare
 
 # Pygame initialization setup
 pygame.init()
