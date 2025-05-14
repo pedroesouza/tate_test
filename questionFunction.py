@@ -138,7 +138,7 @@ def get_user_input(question_text):
                         held_keys["left"] = True
                     elif event.key == pygame.K_RIGHT:
                         held_keys["right"] = True
-                    elif event.key == pygame.K_BACKSLASH:
+                    elif event.unicode == '\\':
                         pygame.quit()
                         sys.exit()
                 else:
