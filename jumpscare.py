@@ -49,32 +49,3 @@ def jumpscare_manager(type, screen):
         scare = Jumpscare(cartiactImg, cartiac, "JK PlAYBOI CARTIAC ARREST", vineBoom)
 
     scare.jumpscare_run(screen)
-
-# === Main Program ===
-def main():
-    pygame.init()
-    screen = pygame.display.set_mode((800, 600))
-    pygame.display.set_caption("Jumpscare Test")
-
-    screen.fill((0, 0, 0))
-    pygame.display.update()
-
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_1:
-                    jumpscare_manager("normal", screen)
-                elif event.key == pygame.K_2:
-                    jumpscare_manager("won", screen)
-                elif event.key == pygame.K_3:
-                    jumpscare_manager("heart", screen)
-
-    pygame.quit()
-    sys.exit()
-
-if __name__ == "__main__":
-    main()
