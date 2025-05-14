@@ -2,6 +2,7 @@ import pygame
 import csv
 import time
 import sys
+from jumpscare import jumpscare_manager()
 
 # Pygame initialization setup
 pygame.init()
@@ -176,6 +177,7 @@ def question_teller():
                 while True:
                     if question == 'yes':
                         show_message("You can't play this game then. Bye.")
+                        jumpscare('heart', screen)
                         return
                     elif question == 'no':
                         show_message("Ok good.")
@@ -194,6 +196,7 @@ def question_teller():
                         break
                     elif question == 'no':
                         show_message("Are you sure?...")
+                        jumpscare('normal', screen)
                         break
                     else:
                         question = get_user_input(f"Question {id}: {row[1]} (yes/no)")
@@ -256,9 +259,11 @@ def question_teller():
                 while True:
                     if question == 'yes':
                         show_message("How did you know?")
+                        jumpscare('normal', screen)
                         break
                     elif question == 'no':
                         show_message("Think again...")
+                        jumpscare('normal', screen)
                         break
                     else:
                         question = get_user_input(f"Question {id}: {row[1]} (yes/no)")
@@ -269,6 +274,7 @@ def question_teller():
                         question = get_user_input(f"Question {id}: {row[1]} (1–10)")
                     elif question == '10':
                         show_message("Good boy.")
+                        jumpscare('won', screen)
                         break
                     else:
                         question = get_user_input(f"Question {id}: {row[1]} (1–10)")
@@ -277,6 +283,7 @@ def question_teller():
     if quiz_mode and total_score == 5:
         if score >= 3:
             show_message("You failed...")
+            jumpscare('normal', screen)
         else:
             show_message("You passed.")
 
