@@ -91,7 +91,7 @@ def draw_screen(question, user_input=''):
         screen.blit(line_surf, rect)
     
     # Display backslash quit instruction in top-right corner
-    quit_text = font.render("Press F1 to quit", True, WHITE)
+    quit_text = font.render("Press F2 to quit", True, WHITE)
     quit_rect = quit_text.get_rect(topright=(WIDTH - 20, 20))
     screen.blit(quit_text, quit_rect)
 
@@ -138,7 +138,7 @@ def get_user_input(question_text):
                         held_keys["left"] = True
                     elif event.key == pygame.K_RIGHT:
                         held_keys["right"] = True
-                    elif event.key == pygame.K_F1:
+                    elif event.key == pygame.K_F2:
                         pygame.quit()
                         sys.exit()
                 else:
