@@ -11,7 +11,7 @@ def exitFunction():
     mixer.init() 
     
     # Loading the song 
-    mixer.music.load("Bye Bye Bye Audio.mp3") 
+    mixer.music.load("Sounds\Bye Bye Bye Audio.mp3") 
     
     # Setting the volume 
     mixer.music.set_volume(0.7) 
