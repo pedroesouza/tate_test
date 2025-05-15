@@ -40,10 +40,11 @@ Not used for this class
 
 ## Author's Information
 ---
-Connor Pavicic - I am a 9th grade programmer who is trying to get by. Coding is really fun for me unless it is an assignment since I like coding when it is chill and relaxed and you can code at your own pace. Here are the places you can find me at: [GitHub]: (https://github.com/ConnorP4231) or email: connor.pavicic@ucas-edu.net
-Evan McCabe - 
-Pedro Souza - 
-Locklin Sheldon - 
++ Connor Pavicic - I am a 9th grade programmer who is trying to get by. Coding is really fun for me unless it is an assignment since I like coding when it is chill and relaxed and you can code at your own pace. Here are the places you can find me at: [GitHub]: (https://github.com/ConnorP4231) or email: connor.pavicic@ucas-edu.net
++ Evan McCabe - I am programming for a 9th grade programming class. Coding's pretty fun sometimes, but I didn't really like this class, and I'm more interested in art and animation, so I don't know if I'll be coding much in the future. I'm pretty awesome though, so feel free to contact me!
+GitHub: https://github.com/PurpleDG Email: purpledefies@gmail.com
++ Pedro Souza - 
++ Locklin Sheldon - 
 
 ## Change Log
 ---
