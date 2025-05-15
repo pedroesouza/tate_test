@@ -33,14 +33,28 @@ class Jumpscare:
         time.sleep(3)
 
 def jumpscare_manager(type, screen):
-    tateImage = pygame.image.load("Images\\tate_image.png").convert()
-    cartiactImg = pygame.image.load("Images\cartiac.jpg").convert()
+    # Load images
+    tateImage = pygame.image.load("tate_image.png").convert()
+
+    cartiactImg = pygame.image.load("cartiac.jpg").convert()
+    cartiactImg = pygame.transform.scale(cartiactImg, (
+        cartiactImg.get_width() * 5,
+        cartiactImg.get_height() * 5
+    ))
+
+    deadPerson = pygame.image.load("dead.jpg").convert()
+    deadPerson = pygame.transform.scale(deadPerson, (
+        deadPerson.get_width() * 4,
+        deadPerson.get_height() * 4
+    ))
+
+    # Load sounds
     cartiac = pygame.mixer.Sound("Sounds\carti-scream.wav")
-    deadPerson = pygame.image.load("Images\dead.jpg").convert()
     deadJumpscareSound = pygame.mixer.Sound("Sounds\dead_sound.wav")
     tateJumpscareSound = pygame.mixer.Sound("Sounds\jumpscare_sound.wav")
     vineBoom = pygame.mixer.Sound("Sounds\\vine_boom.wav")
 
+    # Choose scare based on type
     if type == "normal":
         scare = Jumpscare(tateImage, tateJumpscareSound, "MUST HAVE BEEN THE WIND", vineBoom)
     elif type == "won":
