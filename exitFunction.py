@@ -36,5 +36,3 @@ def exitFunction():
         pygame.display.update()
 
     pygame.quit()
-    
-exitFunction()
