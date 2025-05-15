@@ -3,6 +3,7 @@ import csv
 import time
 import sys
 from jumpscare import jumpscare_manager as jumpscare
+from exitFunction import exitFunction
 
 # Pygame initialization setup
 pygame.init()
@@ -125,7 +126,8 @@ def get_user_input(question_text):
                     cleaned_input = user_input.strip().lower()
                     if cleaned_input == "quit":
                         pygame.quit()
-                        sys.exit()
+                        exitFunction()
+                        
                     return cleaned_input
 
                 elif event.key == pygame.K_BACKSPACE:
@@ -306,4 +308,4 @@ def question_teller():
 
 # Run main function
 question_teller()
-pygame.quit()
+exitFunction()
