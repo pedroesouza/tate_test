@@ -91,7 +91,7 @@ def draw_screen(question, user_input=''):
     for i, line_surf in enumerate(input_lines):
         rect = line_surf.get_rect(center=(base_text_x + text_offset_x, base_text_y + 40 + i * 40 + text_offset_y))
         screen.blit(line_surf, rect)
-    
+   
     # Display backslash quit instruction in top-right corner
     quit_text = font.render("Enter 'quit' to quit", True, WHITE)
     quit_rect = quit_text.get_rect(topright=(WIDTH - 20, 20))
@@ -129,7 +129,7 @@ def get_user_input(question_text):
                     if cleaned_input == "quit":
                         pygame.quit()
                         exitFunction()
-                        
+                       
                     return cleaned_input
 
                 elif event.key == pygame.K_BACKSPACE:
@@ -153,7 +153,7 @@ def get_user_input(question_text):
                         held_keys["right"] = True
 
                 else:
-                    if len(user_input) < 100:
+                    if len(user_input) < 100: #100 character limit
                         user_input += event.unicode
 
             elif event.type == pygame.KEYUP:
