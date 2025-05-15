@@ -34,15 +34,15 @@ class Jumpscare:
 
 def jumpscare_manager(type, screen):
     # Load images
-    tateImage = pygame.image.load("tate_image.png").convert()
+    tateImage = pygame.image.load("Images\\tate_image.png").convert()
 
-    cartiactImg = pygame.image.load("cartiac.jpg").convert()
+    cartiactImg = pygame.image.load("Images\cartiac.jpg").convert()
     cartiactImg = pygame.transform.scale(cartiactImg, (
         cartiactImg.get_width() * 5,
         cartiactImg.get_height() * 5
     ))
 
-    deadPerson = pygame.image.load("dead.jpg").convert()
+    deadPerson = pygame.image.load("Images\dead.jpg").convert()
     deadPerson = pygame.transform.scale(deadPerson, (
         deadPerson.get_width() * 4,
         deadPerson.get_height() * 4
