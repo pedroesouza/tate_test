@@ -136,7 +136,8 @@ def get_user_input(question_text):
                     user_input = user_input[:-1]
 
                 elif event.key == pygame.K_SPACE:
-                    user_input += ' '
+                    if len(user_input) < 100:
+                        user_input += ' '
 
                 # Camera movement code
                 elif event.key in (pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT):
@@ -152,7 +153,8 @@ def get_user_input(question_text):
                         held_keys["right"] = True
 
                 else:
-                    user_input += event.unicode  # Accept letters, numbers, symbols, etc.
+                    if len(user_input) < 100:
+                        user_input += event.unicode
 
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_UP:
