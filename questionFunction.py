@@ -291,6 +291,7 @@ def question_teller():
                     if question in [str(i) for i in range(1, 10)]:
                         show_message("Give me a ten.")
                         question = get_user_input(f"Question {id}: {row[1]} (1–10)")
+                        jumpscare('normal', screen)
                     elif question == '10':
                         show_message("Good boy.")
                         jumpscare('won', screen)
