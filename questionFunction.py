@@ -64,6 +64,7 @@ def draw_screen(question, user_input=''):
     text_offset_y = 0
     current_bg = images["center"]
 
+    #Offsets the text to make it in the computer.
     if held_keys["up"]:
         text_offset_y += speed + 475
         current_bg = images["up"]
@@ -121,6 +122,7 @@ def get_user_input(question_text):
                 pygame.quit()
                 sys.exit()
 
+           # if the user inputs quit then it ends the game
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     cleaned_input = user_input.strip().lower()
@@ -136,6 +138,7 @@ def get_user_input(question_text):
                 elif event.key == pygame.K_SPACE:
                     user_input += ' '
 
+                # Camera movement code
                 elif event.key in (pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT):
                     # Reset all arrow key flags
                     held_keys["up"] = held_keys["down"] = held_keys["left"] = held_keys["right"] = False
