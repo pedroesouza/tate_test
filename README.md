@@ -43,8 +43,8 @@ Not used for this class
 + Connor Pavicic - I am a 9th grade programmer who is trying to get by. Coding is really fun for me unless it is an assignment since I like coding when it is chill and relaxed and you can code at your own pace. Here are the places you can find me at: [GitHub]: (https://github.com/ConnorP4231) or email: connor.pavicic@ucas-edu.net
 + Evan McCabe - I am programming for a 9th grade programming class. Coding's pretty fun sometimes, but I didn't really like this class, and I'm more interested in art and animation, so I don't know if I'll be coding much in the future. I'm pretty awesome though, so feel free to contact me!
 GitHub: https://github.com/PurpleDG Email: purpledefies@gmail.com
-+ Pedro Souza - 
-+ Locklin Sheldon - 
++ Pedro E Souza - Pedro Souza is currently a high school freshman studying computer science, the co creator of this project is his school GitHub account. Contact me @pedro.souza@ucas-edu.net
++ Locklin Sheldon - In a 9th grade programming class for UCAS and UVU. Co-Created this project, locklin.sheldon@ucas-edu.net
 
 ## Change Log
 ---
