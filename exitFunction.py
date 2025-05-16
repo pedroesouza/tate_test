@@ -1,10 +1,12 @@
 #EVAN
 
-import cv2
+#Import needed libraries
+import cv2 #For video
 import pygame
 from pygame import mixer 
 import time
 
+#function to exit
 def exitFunction():
 
     time.sleep(1)

@@ -1,17 +1,17 @@
-#CONNOR
+# CONNOR
 
-#Import needed libraries
+# Import needed libraries
 import csv
 import time
 import pygame
 
-#Get other program's variables and functions
+# Get other program's variables and functions
 from constants import WIDTH, HEIGHT
 from input_handler import get_user_input
 from screen_draw import draw_screen
 from jumpscare import jumpscare_manager as jumpscare  # Make sure this exists and is correctly implemented
 
-#
+# Display a temporary message on screen for a given time
 def show_message(screen, font, held_keys, base_x, base_y, msg, wait=2):
     draw_screen(screen, font, held_keys, base_x, base_y, msg, '')
     start = time.time()
@@ -21,6 +21,7 @@ def show_message(screen, font, held_keys, base_x, base_y, msg, wait=2):
                 pygame.quit()
                 return
 
+# Get a yes/no response from the user, keep asking until valid
 def get_yes_no_input(screen, font, held_keys, base_x, base_y, question):
     first_attempt = True
     while True:
@@ -33,6 +34,7 @@ def get_yes_no_input(screen, font, held_keys, base_x, base_y, question):
         else:
             first_attempt = False
 
+# Get an integer input from the user, retry if not valid
 def get_integer_input(screen, font, held_keys, base_x, base_y, question):
     first_attempt = True
     while True:
@@ -45,13 +47,17 @@ def get_integer_input(screen, font, held_keys, base_x, base_y, question):
         else:
             first_attempt = False
 
+# Main question flow
 def question_teller(screen):
+    # Setup font and input state
     font = pygame.font.SysFont(None, 36)
     held_keys = {"up": False, "down": False, "left": False, "right": False}
     base_x, base_y = WIDTH // 2, HEIGHT // 2 - 100
 
+    # Greet the user
     show_message(screen, font, held_keys, base_x, base_y, "Welcome to the survey.")
 
+    # Define correct answers for quiz-style questions
     quiz_answers = {
         '9a': '19',
         '9b': '2',
@@ -64,6 +70,7 @@ def question_teller(screen):
     score = 0
     total_quiz_questions = len(quiz_answers)
 
+    # Load all questions from CSV file
     with open('questions.csv', 'r') as file:
         reader = csv.reader(file)
         next(reader)  # Skip header
@@ -76,9 +83,11 @@ def question_teller(screen):
             question_text = row[1].strip()
             questions.append((qid, question_text))
 
+        # Loop through each question and handle logic
         for qid, question_text in questions:
             display_question = f"Question {qid}: {question_text}"
 
+            # If it's a quiz question, switch mode and handle grading
             if qid in quiz_answers:
                 if not quiz_mode:
                     quiz_mode = True
@@ -93,6 +102,7 @@ def question_teller(screen):
                     show_message(screen, font, held_keys, base_x, base_y, "Wrong.")
                 continue
 
+            # Handle different input types based on question ID
             if qid in ['1', '4', '6', '8']:
                 answer = get_yes_no_input(screen, font, held_keys, base_x, base_y, display_question)
                 if answer is None:
@@ -106,7 +116,7 @@ def question_teller(screen):
                 if answer is None:
                     return
 
-            # Your custom responses:
+            # Custom response logic for certain questions
             if qid == '2':
                 show_message(screen, font, held_keys, base_x, base_y, "Ok.")
             elif qid == '3':
@@ -123,16 +133,15 @@ def question_teller(screen):
             elif qid == '8':
                 if answer == 'yes':
                     show_message(screen, font, held_keys, base_x, base_y, "Good boy.")
-                # No message if 'no' or else
+                # No response if 'no'
             elif qid == '10':
                 show_message(screen, font, held_keys, base_x, base_y, "Alright.")
             elif qid == '11':
                 show_message(screen, font, held_keys, base_x, base_y, "Ok.")
 
-            # Jumpscare logic — only quit on qid 13 and answer 10
+            # Conditional jumpscare triggers based on specific answers
             if qid == '1' and answer == 'yes':
                 jumpscare('heart', screen)
-                # continue survey, no quit
 
             elif qid == '4' and answer in ['yes', 'no']:
                 jumpscare('normal', screen)
@@ -150,7 +159,7 @@ def question_teller(screen):
                     pygame.quit()
                     return
 
-    # Quiz end message
+    # Final quiz result and optional scare if user failed
     if quiz_mode:
         if score >= 3:
             show_message(screen, font, held_keys, base_x, base_y, f"You passed with score {score} / {total_quiz_questions}.")
