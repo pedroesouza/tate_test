@@ -22,13 +22,16 @@ class Jumpscare:
         screen.fill((0, 0, 0))
         pygame.display.update()
 
-        self.boom.play()
-
+        
         font = pygame.font.Font(None, 64)
         text_surface = font.render(self.text, True, (255, 255, 255))
         text_rect = text_surface.get_rect(center=screen.get_rect().center)
         screen.blit(text_surface, text_rect)
         pygame.display.update()
+
+
+        self.boom.play()
+
 
         time.sleep(3)
 
@@ -38,8 +41,8 @@ def jumpscare_manager(type, screen):
 
     cartiactImg = pygame.image.load("Images\cartiac.jpg").convert()
     cartiactImg = pygame.transform.scale(cartiactImg, (
-        cartiactImg.get_width() * 5,
-        cartiactImg.get_height() * 5
+        cartiactImg.get_width() * 6,
+        cartiactImg.get_height() * 6
     ))
 
     deadPerson = pygame.image.load("Images\dead.jpg").convert()
