@@ -73,6 +73,6 @@ def jumpscare_manager(type, screen):
     elif type == "won":
         scare = Jumpscare(deadPerson, deadJumpscareSound, "YOU DIE :(", vineBoom)
     elif type == "heart":
-        scare = Jumpscare(cartiactImg, cartiac, "JK PlAYBOI CARTIAC ARREST", vineBoom)
+        scare = Jumpscare(cartiactImg, cartiac, "HAHA L PlAYBOI CARTIAC ARREST", vineBoom)
 
     scare.jumpscare_run(screen)
