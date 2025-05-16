@@ -1,3 +1,5 @@
+#CONNOR
+
 # Window size
 WIDTH, HEIGHT = 1650, 1275
 

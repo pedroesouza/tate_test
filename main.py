@@ -1,4 +1,7 @@
+#Import needed library
 import pygame
+
+#Impart needed things from the other files
 from constants import WIDTH, HEIGHT
 from survey_logic import question_teller
 from exitFunction import exitFunction

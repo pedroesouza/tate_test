@@ -1,4 +1,9 @@
+#LOCKLIN
+
+#Import needed library
 import pygame
+
+#Import functions and variables for other files
 from constants import WIDTH, HEIGHT, WHITE
 from graphics import wrap_text
 

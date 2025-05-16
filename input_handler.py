@@ -1,5 +1,10 @@
+#CONNOR and LOCKLIN
+
+#Import needed library
 import pygame
 import sys
+
+#Import functions from other files
 from screen_draw import draw_screen
 from exitFunction import exitFunction
 

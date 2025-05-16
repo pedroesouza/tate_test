@@ -1,12 +1,17 @@
+#CONNOR
+
+#Import needed libraries
 import csv
 import time
 import pygame
 
+#Get other program's variables and functions
 from constants import WIDTH, HEIGHT
 from input_handler import get_user_input
 from screen_draw import draw_screen
 from jumpscare import jumpscare_manager as jumpscare  # Make sure this exists and is correctly implemented
 
+#
 def show_message(screen, font, held_keys, base_x, base_y, msg, wait=2):
     draw_screen(screen, font, held_keys, base_x, base_y, msg, '')
     start = time.time()
