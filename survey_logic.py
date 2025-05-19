@@ -137,9 +137,9 @@ def question_teller(screen):
                 # Final quiz result and optional scare if user failed
             elif quiz_mode:
                 if score >= 3:
-                    show_message(screen, font, held_keys, base_x, base_y, f"You passed with score {score} / {total_quiz_questions}.")
+                    show_message(screen, font, held_keys, base_x, base_y, f"By the way, you passed the quiz, with score {score} / {total_quiz_questions}.")
                 else:
-                    show_message(screen, font, held_keys, base_x, base_y, f"You failed with score {score} / {total_quiz_questions}.")
+                    show_message(screen, font, held_keys, base_x, base_y, f"By the way, you failed the quiz, with score {score} / {total_quiz_questions}.")
                     jumpscare('normal', screen)
             elif qid == '10':
                 show_message(screen, font, held_keys, base_x, base_y, "Alright.")
