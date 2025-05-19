@@ -134,6 +134,13 @@ def question_teller(screen):
                 if answer == 'yes':
                     show_message(screen, font, held_keys, base_x, base_y, "Good boy.")
                 # No response if 'no'
+                # Final quiz result and optional scare if user failed
+            elif quiz_mode:
+                if score >= 3:
+                    show_message(screen, font, held_keys, base_x, base_y, f"You passed with score {score} / {total_quiz_questions}.")
+                else:
+                    show_message(screen, font, held_keys, base_x, base_y, f"You failed with score {score} / {total_quiz_questions}.")
+                    jumpscare('normal', screen)
             elif qid == '10':
                 show_message(screen, font, held_keys, base_x, base_y, "Alright.")
             elif qid == '11':
@@ -158,11 +165,3 @@ def question_teller(screen):
                     jumpscare('won', screen)
                     pygame.quit()
                     return
-
-    # Final quiz result and optional scare if user failed
-    if quiz_mode:
-        if score >= 3:
-            show_message(screen, font, held_keys, base_x, base_y, f"You passed with score {score} / {total_quiz_questions}.")
-        else:
-            show_message(screen, font, held_keys, base_x, base_y, f"You failed with score {score} / {total_quiz_questions}.")
-            jumpscare('normal', screen)
