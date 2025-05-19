@@ -262,6 +262,13 @@ def question_teller():
                     score += 1
                 else:
                     show_message("Incorrect...")
+                # Show quiz results
+            if quiz_mode and total_score == 5:
+                if score <= 3:
+                    show_message("You failed...")
+                    jumpscare('normal', screen)
+                else:
+                    show_message("You passed.")
             elif id == '10':
                 while True:
                     if question == 'yes':
@@ -303,14 +310,6 @@ def question_teller():
                         break
                     else:
                         question = get_user_input(f"Question {id}: {row[1]} (1–10)")
-
-    # Show quiz results
-    if quiz_mode and total_score == 5:
-        if score >= 3:
-            show_message("You failed...")
-            jumpscare('normal', screen)
-        else:
-            show_message("You passed.")
 
 # Run main function
 question_teller()
