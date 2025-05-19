@@ -101,7 +101,6 @@ def question_teller(screen):
                 else:
                     show_message(screen, font, held_keys, base_x, base_y, "Wrong.")
                 continue
-            quiz_mode = False
 
             # Handle different input types based on question ID
             if qid in ['1', '4', '6', '8']:
